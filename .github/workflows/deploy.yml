@@ -38,7 +38,6 @@ jobs:
 
       - name: Configure Terraform authentication
         run: |
-          ls -lrth
           echo '${{ secrets.GCLOUD_SERVICE_ACCOUNT_KEY }}' > /tmp/gcp-key.json
           gcloud auth activate-service-account --key-file=/tmp/gcp-key.json
           gcloud config set project ${{ env.PROJECT_ID }}
@@ -57,16 +56,16 @@ jobs:
 
       - name: Terraform Initialize
         id: init
-        run: terraform init
+        run: cd TWO; terraform init
 
       - name: Terraform Validation
         id: validate
-        run: terraform validate
+        run: cd TWO;terraform validate
 
       - name: Terraform Plan
         id: plan
         run: |
-          terraform plan -input=false -out=tfplan -detailed-exitcode
+          cd TWO; terraform plan -input=false -out=tfplan -detailed-exitcode
         continue-on-error: true
 
       - name: Comment PR with Plan
@@ -98,7 +97,7 @@ jobs:
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: terraform apply -input=false tfplan
+        run: cd TWO;terraform apply -input=false tfplan
 
       - name: Clean up credentials
         if: always()
