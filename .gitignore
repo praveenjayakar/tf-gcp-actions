@@ -35,3 +35,4 @@ override.tf.json
 # Ignore CLI configuration files
 .terraformrc
 terraform.rc
+edge-485915-c67997d0569d.json
