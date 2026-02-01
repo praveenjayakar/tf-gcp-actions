@@ -29,10 +29,10 @@ output "subnet_gateway_address" {
   description = "Gateway IP address of the subnet"
 }
 
-output "terraform_state_bucket" {
-  value       = google_storage_bucket.terraform_state.name
-  description = "Name of the Terraform state storage bucket"
-}
+# output "terraform_state_bucket" {
+#   value       = google_storage_bucket.terraform_state.name
+#   description = "Name of the Terraform state storage bucket"
+# }
 
 output "app_storage_bucket" {
   value       = google_storage_bucket.app_storage.name
