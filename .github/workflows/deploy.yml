@@ -38,6 +38,7 @@ jobs:
 
       - name: Configure Terraform authentication
         run: |
+          ls -lrth
           echo '${{ secrets.GCLOUD_SERVICE_ACCOUNT_KEY }}' > /tmp/gcp-key.json
           gcloud auth activate-service-account --key-file=/tmp/gcp-key.json
           gcloud config set project ${{ env.PROJECT_ID }}
