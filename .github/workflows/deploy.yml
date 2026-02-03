@@ -12,7 +12,7 @@ on:
 
 
 env:
-  PROJECT_ID: your-gcp-project-id  # Replace with your project ID
+  PROJECT_ID:  edge-485915 # Replace with your project ID
   TF_VERSION: 1.6.0
 
 jobs:
